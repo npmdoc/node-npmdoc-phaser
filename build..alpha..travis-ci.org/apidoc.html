@@ -1,0 +1,200 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="http://phaser.io"
+
+    >phaser (v2.6.2)</a>
+</h1>
+<h4>A fast, free and fun HTML5 Game Framework for Desktop and Mobile web browsers.</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.phaser">module phaser</a><ol>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">phaser.</span>converter</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">phaser.</span>sourceproxy</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.phaser.converter">module phaser.converter</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.phaser.converter.convert">
+            function <span class="apidocSignatureSpan">phaser.converter.</span>convert
+            <span class="apidocSignatureSpan">(yuidoc)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.phaser.sourceproxy">module phaser.sourceproxy</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.phaser.sourceproxy.defineTags">
+            function <span class="apidocSignatureSpan">phaser.sourceproxy.</span>defineTags
+            <span class="apidocSignatureSpan">(dictionary)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.phaser" id="apidoc.module.phaser">module phaser</a></h1>
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.phaser.converter" id="apidoc.module.phaser.converter">module phaser.converter</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.phaser.converter.convert" id="apidoc.element.phaser.converter.convert">
+        function <span class="apidocSignatureSpan">phaser.converter.</span>convert
+        <span class="apidocSignatureSpan">(yuidoc)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">convert = function (yuidoc) {
+
+    return yuidocdata_to_jsdoc(yuidoc);
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      // A preamble/warning wrt the YUIDoc-to-JSDoc with proper link-outs could
+      // also be added here.
+      var header =
+        &#x22;/**\n&#x22; +
+        &#x22;* @namespace PIXI\n&#x22; +
+        &#x22;*/&#x22;;
+
+      var comments = yui2jsdoc.<span class="apidocCodeKeywordSpan">convert</span>(data);
+      comments.unshift(header);
+      fs.writeFileSync(output, comments.join(&#x22;\n&#x22;));
+
+  });
+
+};
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.phaser.sourceproxy" id="apidoc.module.phaser.sourceproxy">module phaser.sourceproxy</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.phaser.sourceproxy.defineTags" id="apidoc.element.phaser.sourceproxy.defineTags">
+        function <span class="apidocSignatureSpan">phaser.sourceproxy.</span>defineTags
+        <span class="apidocSignatureSpan">(dictionary)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">defineTags = function (dictionary) {
+
+    dictionary.defineTag(&#x27;nosource&#x27;, {
+        onTagged: function (doclet, tag) {
+            doclet.meta.nosource = true;
+            //doclet.meta.path = &#x27;&#x27;;
+            //doclet.meta.filename = &#x27;&#x27;;
+        }
+    });
+
+    dictionary.defineTag(&#x27;sourcefile&#x27;, {
+        onTagged: function (doclet, tag) {
+            var filename = tag.value;
+            doclet.meta.path = path.dirname(filename);
+            doclet.meta.filename = path.basename(filename);
+        }
+    });
+
+    dictionary.defineTag(&#x27;sourceline&#x27;, {
+       onTagged: function (doclet, tag) {
+           var lineno = tag.value;
+           doclet.meta.lineno = lineno;
+       }
+    });
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
